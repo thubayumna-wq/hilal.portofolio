@@ -294,29 +294,89 @@
         }
 
         /* ===== SECTION STYLES ===== */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+        :root {
+    --bg-dark: #050505;
+    --card-bg: #111111;
+    --accent-1: #6366f1; /* Indigo */
+    --accent-2: #ec4899; /* Pink Neon */
+    --text-main: #ffffff;
+    --text-dim: #a1a1aa;
+}
 
-        section h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--dark);
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-        }
+/* Animasi Background Bergerak */
+body {
+    background: linear-gradient(-45deg, #050505, #111111, #0f172a, #050505);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Update Warna Card */
+.skill-card, .portfolio-item, .info-card {
+    background: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.skill-card:hover, .portfolio-item:hover {
+    transform: translateY(-10px) scale(1.03) !important;
+    border-color: var(--accent-1) !important;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Header Styling dengan Foto Profil */
+header {
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+}
+
+.profile-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.profile-pic-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-1);
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white;
+}
+
+/* Animasi Text Gradasi */
+h1, h2 {
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+            
+    
 
         /* ===== ABOUT SECTION ===== */
         /* Card di bagian Tentang Saya */
@@ -676,10 +736,15 @@
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
 
-    <!-- Header & Navigation -->
     <header>
+    <div class="nav-container">
+        <!-- Foto Profil & Nama di Header -->
+        <a href="#home" class="profile-brand">
+            <img src="link-foto-kamu.jpg" alt="Hilal" class="profile-pic-header">
+            <div class="logo">HILAL.</div>
+        </a>
+
         <nav>
-            <div class="logo">Hilal</div>
             <ul class="nav-links">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
@@ -687,9 +752,10 @@
                 <li><a href="#portfolio">Portofolio</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle">☰</button>
         </nav>
-    </header>
+        <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
