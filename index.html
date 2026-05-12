@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhamad Hilal - Graphic Designer & Illustrator</title>
+    <style>
+        :root {
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --dark: #1f2937;
+    --light: #f9fafb; /* <--- GANTI INI untuk background utama */
+    --text: #374151;
+    --border: #e5e7eb;
+    --success: #10b981;
+}
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--success));
+            width: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.5);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            {
+    background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-links a {
+    color: var(--text);
+}
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== KEYFRAME ANIMATIONS ===== */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+            }
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+        }
+
+        .reveal.active {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--dark);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        /* Card di bagian Tentang Saya */
+.info-card {
+    background: var(--light); /* Warna card abu gelap */
+    border: 1px solid var(--border);
+}
+
+/* Card di bagian Keahlian */
+.skill-card {
+    background: var(--light) !important; /* Pakai !important biar nindih kode lama */
+    border: 1px solid var(--border);
+}
+
+.skill-card h3, .skill-card p {
+    color: var(--text); /* Pastikan tulisan kebaca */
+}
+
+/* Card di bagian Portofolio */
+.portfolio-item {
+    background: var(--light);
+    border: 1px solid var(--border);
+}
+
+.portfolio-info h3 {
+    color: var(--text);
+}
+
+.portfolio-info p {
+    color: #94a3b8; /* Warna teks agak pudar untuk deskripsi */
+}
+
+/* Section About & Portfolio biar nggak putih warnanya */
+.about, .portfolio {
+    background: var(--dark) !important;
+}
+
+        /* ===== SKILLS SECTION ===== */
+        .skills {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: var(--dark);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-bar {
+            background: var(--border);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            width: 0;
+            transition: width 0.8s ease;
+        }
+
+        .skill-bar-fill.animate {
+            width: var(--width);
+        }
+
+        .skill-percent {
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image::after {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            color: var(--dark);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: var(--light);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: linear-gradient(135deg, var(--dark), #374151);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact h2::after {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--secondary);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                left: 0;
+                flex-direction: column;
+                background: white;
+                padding: 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                margin-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.75rem;
+            }
+
+            .about-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Hilal</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Muhamad Hilal</h1>
+            <p>Graphic Designer | Illustrator | Creative Enthusiast</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">Lihat Karya Saya</a>
+                <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>Tentang Saya</h2>
+        <div class="about-content reveal">
+            <div class="about-text">
+                <h3>Kreator Konten Visual & Desainer Grafis</h3>
+                <p>Saya adalah seorang desainer grafis dan ilustrator berpengalaman dengan passion dalam menciptakan karya visual yang menarik dan bermakna. Dengan latar belakang pendidikan dari MA Assanusiyah, saya telah mengembangkan keahlian dalam berbagai bidang desain.</p>
+                <p>Setiap proyek yang saya tangani didedikasikan untuk memberikan solusi kreatif yang inovatif dan sesuai dengan visi klien.</p>
+                
+                <div class="about-info">
+                    <div class="info-card reveal">
+                        <h4>📚 Pendidikan</h4>
+                        <p>MA Assanusiyah</p>
+                    </div>
+                    <div class="info-card reveal">
+                        <h4>🎨 Hobi</h4>
+                        <p>Menggambar</p>
+                    </div>
+                    <div class="info-card reveal">
+                        <h4>💼 Pengalaman</h4>
+                        <p>PT Buana Kaos</p>
+                    </div>
+                    <div class="info-card reveal">
+                        <h4>🌟 Spesialisasi</h4>
+                        <p>Desain & Ilustrasi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">🎨</div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2>Keahlian Saya</h2>
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-icon">✏️</div>
+                <h3>Sketsa Wajah</h3>
+                <p>Membuat sketsa wajah yang detail dan ekspresif dengan teknik tradisional dan digital</p>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--width: 95%"></div>
+                </div>
+                <div class="skill-percent">95%</div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🖼️</div>
+                <h3>Mural & Kaligrafi</h3>
+                <p>Mendesain dan mengeksekusi mural berskala besar serta karya kaligrafi artistik</p>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--width: 90%"></div>
+                </div>
+                <div class="skill-percent">90%</div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🎨</div>
+                <h3>Figma Design</h3>
+                <p>Desain UI/UX modern dan prototyping menggunakan Figma dengan hasil profesional</p>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--width: 85%"></div>
+                </div>
+                <div class="skill-percent">85%</div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🛠️</div>
+                <h3>Corel Draw</h3>
+                <p>Ilustrasi vektor berkualitas tinggi dan desain grafis profesional dengan Corel Draw</p>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--width: 88%"></div>
+                </div>
+                <div class="skill-percent">88%</div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🎬</div>
+                <h3>Adobe Suite</h3>
+                <p>Penguasaan lengkap Adobe Creative Suite untuk editing dan desain multimedia</p>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--width: 82%"></div>
+                </div>
+                <div class="skill-percent">82%</div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">💡</div>
+                <h3>Konsep Kreatif</h3>
+                <p>Mengembangkan ide-ide kreatif unik dan strategi visual yang efektif</p>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="--width: 92%"></div>
+                </div>
+                <div class="skill-percent">92%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2>Portofolio Saya</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">🎭</div>
+                <div class="portfolio-info">
+                    <h3>Sketsa Wajah Potret</h3>
+                    <p>Koleksi sketsa wajah dengan detail tinggi menggunakan teknik pencil</p>
+                    <div>
+                        <span class="portfolio-tag">Sketsa</span>
+                        <span class="portfolio-tag">Potret</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">🏢</div>
+                <div class="portfolio-info">
+                    <h3>Mural PT Buana Kaos</h3>
+                    <p>Desain dan eksekusi mural di kantor PT Buana Kaos yang mencerminkan brand identity</p>
+                    <div>
+                        <span class="portfolio-tag">Mural</span>
+                        <span class="portfolio-tag">Branding</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">✨</div>
+                <div class="portfolio-info">
+                    <h3>Desain Kaligrafi Modern</h3>
+                    <p>Kolaborasi kaligrafi tradisional dengan desain modern untuk berbagai keperluan</p>
+                    <div>
+                        <span class="portfolio-tag">Kaligrafi</span>
+                        <span class="portfolio-tag">Desain</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">🎨</div>
+                <div class="portfolio-info">
+                    <h3>Ilustrasi Vektor</h3>
+                    <p>Berbagai ilustrasi vektor menggunakan Corel Draw untuk berbagai proyek commercial</p>
+                    <div>
+                        <span class="portfolio-tag">Vektor</span>
+                        <span class="portfolio-tag">Ilustrasi</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">📱</div>
+                <div class="portfolio-info">
+                    <h3>UI/UX Design</h3>
+                    <p>Desain antarmuka pengguna modern dan responsif untuk aplikasi mobile dan web</p>
+                    <div>
+                        <span class="portfolio-tag">UI/UX</span>
+                        <span class="portfolio-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">🎯</div>
+                <div class="portfolio-info">
+                    <h3>Branding & Identity</h3>
+                    <p>Pengembangan brand identity lengkap termasuk logo, color palette, dan guidelines</p>
+                    <div>
+                        <span class="portfolio-tag">Branding</span>
+                        <span class="portfolio-tag">Identity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Mari Berkolaborasi</h2>
+        <div class="contact-content reveal">
+            <p>Saya siap mewujudkan visi kreatif Anda menjadi karya visual yang memukau. Hubungi saya untuk mendiskusikan proyek Anda.</p>
+            <div class="contact-links">
+                <a href="mailto:hilal@example.com" class="contact-link">📧 Email</a>
+                <a href="https://wa.me/6281234567890" class="contact-link">💬 WhatsApp</a>
+                <a href="https://instagram.com" class="contact-link">📸 Instagram</a>
+                <a href="https://linkedin.com" class="contact-link">💼 LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Muhamad Hilal. Semua hak dilindungi. | Crafted with ❤️</p>
+    </footer>
+
+    <script>
+        // ===== SCROLL PROGRESS BAR =====
+        const scrollProgress = document.querySelector('.scroll-progress');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // ===== MOBILE NAVIGATION =====
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ===== REVEAL ANIMATION ON SCROLL =====
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // ===== SKILL BAR ANIMATION =====
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const windowHeight = window.innerHeight;
+                const barTop = bar.getBoundingClientRect().top;
+                const barVisible = 100;
+
+                if (barTop < windowHeight - barVisible && !bar.classList.contains('animate')) {
+                    bar.classList.add('animate');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateSkillBars);
+        animateSkillBars(); // Initial check
+
+        // ===== SMOOTH SCROLL FOR NAVIGATION =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== HEADER SHADOW ON SCROLL =====
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // ===== INITIALIZE =====
+        console.log('🎨 Portfolio Muhamad Hilal berhasil dimuat!');
+    </script>
+</body>
+</html>
