@@ -295,85 +295,135 @@
 
         /* ===== SECTION STYLES ===== */
         :root {
-    --bg-dark: #050505;
-    --card-bg: #111111;
-    --accent-1: #6366f1; /* Indigo */
-    --accent-2: #ec4899; /* Pink Neon */
-    --text-main: #ffffff;
-    --text-dim: #a1a1aa;
+    --bg-body: #020617;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary: #00d2ff;
+    --secondary: #92fe9d;
+    --accent: #f472b6;
+    --nav-bg: rgba(15, 23, 42, 0.8);
+    --text: #f8fafc;
 }
 
-/* Animasi Background Bergerak */
+/* ===== ANIMASI BACKGROUND BERGERAK ===== */
 body {
-    background: linear-gradient(-45deg, #050505, #111111, #0f172a, #050505);
+    background: linear-gradient(-45deg, #020617, #0f172a, #1e1b4b, #020617);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: var(--text-main);
+    animation: gradientShift 10s ease infinite;
+    color: var(--text);
     font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
 }
 
-@keyframes gradientBG {
+@keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Update Warna Card */
-.skill-card, .portfolio-item, .info-card {
-    background: var(--card-bg) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(10px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-
-.skill-card:hover, .portfolio-item:hover {
-    transform: translateY(-10px) scale(1.03) !important;
-    border-color: var(--accent-1) !important;
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2) !important;
-}
-
-/* Header Styling dengan Foto Profil */
+/* ===== HEADER FLOATING CARD ===== */
 header {
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 20px; /* Jarak dari atas biar melayang */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    z-index: 1000;
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
+nav {
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px; /* Bentuk card melengkung */
+    padding: 0.8rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.profile-brand {
+@keyframes slideDown {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Branding & Foto Profil */
+.brand-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-decoration: none;
 }
 
-.profile-pic-header {
-    width: 40px;
-    height: 40px;
+.profile-img {
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
+    border: 2px solid var(--primary);
     object-fit: cover;
-    border: 2px solid var(--accent-1);
 }
 
 .logo {
+    font-size: 1.2rem;
     font-weight: 800;
-    letter-spacing: 1px;
-    color: white;
-}
-
-/* Animasi Text Gradasi */
-h1, h2 {
-    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Nav Links Card Animation */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
+}
+
+/* ===== CARD STYLING (SKILLS & PORTFOLIO) ===== */
+.skill-card, .portfolio-item, .info-card {
+    background: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 24px !important;
+    transition: all 0.4s ease !important;
+}
+
+.skill-card:hover, .portfolio-item:hover {
+    border-color: var(--primary) !important;
+    transform: translateY(-12px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2) !important;
+}
+
+/* Animasi Progress Bar Skill */
+.skill-bar-fill {
+    background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+}
+
+/* Button Styling */
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+    color: #000 !important;
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary) !important;
+    color: var(--primary) !important;
 }
             
     
@@ -737,24 +787,23 @@ h1, h2 {
     <div class="scroll-progress"></div>
 
     <header>
-    <div class="nav-container">
-        <!-- Foto Profil & Nama di Header -->
-        <a href="#home" class="profile-brand">
-            <img src="link-foto-kamu.jpg" alt="Hilal" class="profile-pic-header">
-            <div class="logo">HILAL.</div>
-        </a>
-
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#portfolio">Portofolio</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <div class="brand-wrapper">
+            <!-- Ganti src dengan link foto profil kamu -->
+            <img src="https://via.placeholder.com/150" alt="Muhamad Hilal" class="profile-img">
+            <div class="logo">MUHAMAD HILAL</div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#portfolio">Portofolio</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        
         <button class="nav-toggle" id="navToggle">☰</button>
-    </div>
+    </nav>
 </header>
 
     <!-- Hero Section -->
