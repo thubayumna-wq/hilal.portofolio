@@ -1153,7 +1153,9 @@ MUHAMAD HILAL
 </div>
 
 </div>
-
+<button class="nav-toggle">
+☰
+</button>
 <ul class="nav-links">
 
 <li><a href="#home">Beranda</a></li>
@@ -1166,8 +1168,6 @@ MUHAMAD HILAL
 </nav>
 
 </header>
-
-<div class="hero-content">
 
 <div class="hero-content">
 
@@ -1248,7 +1248,6 @@ creative untuk kebutuhan bisnis maupun personal.
 </div>
 
 </div>
-
 </div>
 
 <div class="about-image reveal">
@@ -1393,8 +1392,6 @@ Konsep mural artistik modern dan kreatif
 
 </div>
 
-</div>
-
 </section>
 
 <!-- PORTFOLIO -->
@@ -1413,10 +1410,14 @@ Beberapa project terbaik yang pernah saya kerjakan
 
 <div class="portfolio-grid">
 
+<!-- SKETSA -->
+
 <div class="portfolio-item reveal">
 
 <div class="portfolio-image">
-    <img src="https://i.ibb.co.com/DHKWfcZn/IMG-20251106-175806.jpg" alt="Sketsa Wajah">
+<img
+src="https://i.ibb.co.com/DHKWfcZn/IMG-20251106-175806.jpg"
+alt="Sketsa Wajah">
 </div>
 
 <div class="portfolio-info">
@@ -1434,10 +1435,16 @@ Karya sketsa realistis dengan detail tinggi
 
 </div>
 
+<!-- KALIGRAFI -->
+
 <div class="portfolio-item reveal">
 
 <div class="portfolio-image">
-   <img src="https://i.ibb.co.com/t9V4ZBR/Screenshot-2025-11-19-19-43-49-963-com-arabyfree-zaaaaakh-edit.jpg" alt="Kaligrafi"> 
+
+<img
+src="https://i.ibb.co.com/t9V4ZBR/Screenshot-2025-11-19-19-43-49-963-com-arabyfree-zaaaaakh-edit.jpg"
+alt="Kaligrafi">
+
 </div>
 
 <div class="portfolio-info">
@@ -1455,10 +1462,16 @@ Gabungan seni tradisional dan modern
 
 </div>
 
+<!-- UI DESIGN -->
+
 <div class="portfolio-item reveal">
 
 <div class="portfolio-image">
-<img src="https://i.ibb.co.com/gLxnCkBh/Screenshot-2026-05-17-115737.png" alt="UI Design">
+
+<img
+src="https://i.ibb.co.com/gLxnCkBh/Screenshot-2026-05-17-115737.png"
+alt="UI Design">
+
 </div>
 
 <div class="portfolio-info">
@@ -1571,11 +1584,15 @@ document.querySelector(".nav-toggle");
 const navLinks =
 document.querySelector(".nav-links");
 
+if(navToggle){
+
 navToggle.addEventListener("click",()=>{
 
 navLinks.classList.toggle("active");
 
 });
+
+}
 
 /* ===== REVEAL ===== */
 
