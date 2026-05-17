@@ -169,42 +169,63 @@ header{
 }
 
 nav{
-    background:rgba(15,23,42,0.7);
 
-    backdrop-filter:blur(18px);
+background:
+rgba(15,23,42,.75);
 
-    border:1px solid var(--border);
+backdrop-filter:
+blur(18px);
 
-    border-radius:22px;
+border:
+1px solid var(--border);
 
-    padding:15px 24px;
+border-radius:30px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+padding:30px;
 
-    box-shadow:var(--shadow);
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:20px;
+
+box-shadow:var(--shadow);
+
 }
 
 /* ===== BRAND ===== */
 
 .brand-wrapper{
-    display:flex;
-    align-items:center;
-    gap:15px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:12px;
+
 }
 
 .profile-img{
-    width:60px;
-    height:60px;
 
-    border-radius:50%;
+width:100px;
+height:100px;
 
-    object-fit:cover;
+border-radius:50%;
 
-    border:2px solid rgba(255,255,255,0.15);
+object-fit:cover;
 
-    transition:0.4s;
+border:
+4px solid
+rgba(255,255,255,.1);
+
+box-shadow:
+0 0 30px
+rgba(139,92,246,.35);
+
 }
 
 .profile-img:hover{
@@ -221,10 +242,15 @@ nav{
 /* ===== NAVIGATION ===== */
 
 .nav-links{
-    display:flex;
-    gap:12px;
 
-    list-style:none;
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:14px;
+
 }
 
 .nav-links a{
@@ -939,6 +965,10 @@ margin-bottom:20px;
 footer{
     padding:30px;
 
+    background:rgba(255,255,255,.02);
+
+    backdrop-filter:blur(10px);
+
     text-align:center;
 
     border-top:
@@ -1112,16 +1142,20 @@ opacity:0;
 
 <nav>
 
+</div>
+
 <div class="brand-wrapper">
 
 <img
 src="https://i.ibb.co.com/gbFTSvLD/Whats-App-Image-2026-04-23-at-22-10-56.jpg"
-alt="Muhamad Hilal Mubarok"
+alt="Muhammad Hilal Mubarok"
 class="profile-img"
 />
 
 <div class="logo">
+
 MUHAMAD HILAL MUBAROK
+
 </div>
 
 </div>
@@ -1154,7 +1188,7 @@ MUHAMAD HILAL MUBAROK
 
 <div class="hero-content">
 
-<h1>Muhamad Hilal</h1>
+<h1>Muhamad Hilal Mubarok</h1>
 
 <p>
 Graphic Designer • Illustrator • Creative Enthusiast
