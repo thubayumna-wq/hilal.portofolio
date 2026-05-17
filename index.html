@@ -623,6 +623,47 @@ margin:auto;
     margin-bottom:10px;
 }
 
+.info-card{
+
+padding:28px;
+
+text-align:center;
+
+transition:.4s;
+
+}
+
+.info-icon{
+
+font-size:32px;
+
+margin-bottom:15px;
+
+background:
+linear-gradient(
+135deg,
+#8b5cf6,
+#6366f1
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+display:block;
+
+transition:.4s;
+
+}
+
+.info-card:hover .info-icon{
+
+transform:
+scale(1.2)
+rotate(8deg);
+
+}
+
 /* ===== SKILL CARD ===== */
 
 .skill-card{
@@ -1120,6 +1161,81 @@ opacity:0;
 
 }
 
+.info-card{
+    text-align:center;
+    padding:30px 20px;
+    border-radius:24px;
+    position:relative;
+    overflow:hidden;
+
+    transition:0.4s ease;
+
+    transform-style:preserve-3d;
+}
+
+/* glow background */
+.info-card::before{
+    content:"";
+    position:absolute;
+    inset:-50px;
+
+    background:radial-gradient(
+        circle,
+        rgba(139,92,246,0.25),
+        transparent 60%
+    );
+
+    opacity:0;
+    transition:0.5s;
+    filter:blur(30px);
+}
+
+/* hover 3D */
+.info-card:hover{
+    transform:translateY(-12px) rotateX(8deg) rotateY(-8deg) scale(1.03);
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+.info-card:hover::before{
+    opacity:1;
+}
+
+/* ICON UPGRADE */
+.info-icon{
+    font-size:34px;
+    margin-bottom:12px;
+
+    background:linear-gradient(135deg,#8b5cf6,#6366f1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    display:block;
+
+    transition:0.4s;
+    animation:floatIcon 3s ease-in-out infinite;
+}
+
+.info-card:hover .info-icon{
+    transform:scale(1.25) rotate(10deg);
+}
+
+/* FLOAT ICON ANIMATION */
+@keyframes floatIcon{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+}
+
+/* TEXT STYLE UPGRADE */
+.info-card h4{
+    font-size:1.1rem;
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:var(--text-soft);
+    font-size:0.95rem;
+}
+
 </style>
 </head>
 
@@ -1227,23 +1343,43 @@ creative untuk kebutuhan bisnis maupun personal.
 <div class="about-info">
 
 <div class="info-card">
-<h4>📚 Pendidikan</h4>
+
+<i class="fa-solid fa-graduation-cap info-icon"></i>
+
+<h4>Pendidikan</h4>
+
 <p>MA Assanusiyah</p>
+
 </div>
 
 <div class="info-card">
-<h4>💼 Pengalaman</h4>
+
+<i class="fa-solid fa-briefcase info-icon"></i>
+
+<h4>Pengalaman</h4>
+
 <p>PT Buana Kaos</p>
+
 </div>
 
 <div class="info-card">
-<h4>🎨 Hobi</h4>
+
+<i class="fa-solid fa-palette info-icon"></i>
+
+<h4>Hobi</h4>
+
 <p>Menggambar</p>
+
 </div>
 
 <div class="info-card">
-<h4>✨ Spesialisasi</h4>
+
+<i class="fa-solid fa-wand-magic-sparkles info-icon"></i>
+
+<h4>Spesialisasi</h4>
+
 <p>Desain & Ilustrasi</p>
+
 </div>
 
 </div>
@@ -1421,7 +1557,7 @@ alt="Sketsa Wajah">
 
 <div class="portfolio-info">
 
-<h3>Sketsa Potret</h3>
+<h3>Sketsa</h3>
 
 <p>
 Karya sketsa realistis dengan detail tinggi
@@ -1510,7 +1646,12 @@ Mari berkolaborasi untuk menciptakan karya luar biasa
 
 <div class="contact-links">
 
-<a href="#" class="contact-link reveal">
+<div class="contact-links">
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/087786377812"
+target="_blank"
+class="contact-link reveal">
 
 <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 
@@ -1518,7 +1659,10 @@ Mari berkolaborasi untuk menciptakan karya luar biasa
 
 </a>
 
-<a href="#" class="contact-link reveal">
+<!-- INSTAGRAM -->
+<a href="https://instagram.com/xtra_hll"
+target="_blank"
+class="contact-link reveal">
 
 <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
 
@@ -1526,7 +1670,9 @@ Mari berkolaborasi untuk menciptakan karya luar biasa
 
 </a>
 
-<a href="#" class="contact-link reveal">
+<!-- EMAIL -->
+<a href="mailto:muhammadhilalll26@gmail.com"
+class="contact-link reveal">
 
 <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
 
@@ -1534,7 +1680,10 @@ Mari berkolaborasi untuk menciptakan karya luar biasa
 
 </a>
 
-<a href="#" class="contact-link reveal">
+<!-- LINKEDIN -->
+<a href="https://linkedin.com/in/Hilal Mubarok"
+target="_blank"
+class="contact-link reveal">
 
 <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png">
 
