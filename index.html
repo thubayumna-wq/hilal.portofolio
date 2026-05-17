@@ -390,9 +390,23 @@ section{
 
     border-radius:30px;
 
-    .about-image{
+    overflow:hidden;
+
+    animation:float 6s ease-in-out infinite;
+}
+
+.about-image img{
     width:100%;
-    height:350px;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
     border-radius:30px;
 
@@ -524,7 +538,7 @@ section{
 
 .portfolio-image img{
     width:100%;
-    height:150%;
+    height:100%;
 
     object-fit:cover;
 
@@ -552,8 +566,16 @@ section{
 /* ===== PORTFOLIO ===== */
 
 .portfolio-grid{
+    display:grid;
+
     grid-template-columns:
-        repeat(auto-fit,minmax(100px,1fr));
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+    max-width:1200px;
+    margin:auto;
+}
 
     max-width:1200px;
     margin:auto;
@@ -721,6 +743,29 @@ footer{
     50%{
         transform:translateY(-20px);
     }
+}
+    body::before{
+content:"";
+
+position:fixed;
+
+width:600px;
+height:600px;
+
+background:
+radial-gradient(
+circle,
+rgba(139,92,246,.18),
+transparent 70%
+);
+
+top:-200px;
+left:-100px;
+
+animation:
+float 10s infinite ease-in-out;
+
+z-index:-1;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -901,7 +946,6 @@ creative untuk kebutuhan bisnis maupun personal.
 </div>
 
 <div class="about-image reveal">
-<div class="about-image reveal">
 
 <img
 src="https://i.ibb.co.com/SDNPCNty/IMG-20260517-WA0065.jpg"
@@ -1013,7 +1057,7 @@ Konsep mural artistik modern dan kreatif
 
 <div class="section-title reveal">
 
-<h2>Portofolio</h2>
+<h2>Portfolio</h2>
 
 <p>
 Beberapa project terbaik yang pernah saya kerjakan
