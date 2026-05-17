@@ -51,6 +51,87 @@ body{
 
     overflow-x:hidden;
 }
+    /* ===== BACKGROUND ANIMATION ===== */
+
+body::before{
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(139,92,246,.20),
+    transparent 70%
+    );
+
+    top:-250px;
+    left:-150px;
+
+    animation:
+    glowMove 10s ease-in-out infinite;
+
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+
+    width:600px;
+    height:600px;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(99,102,241,.18),
+    transparent 70%
+    );
+
+    bottom:-200px;
+    right:-120px;
+
+    animation:
+    glowMove2 12s ease-in-out infinite;
+
+    z-index:-1;
+}
+
+@keyframes glowMove{
+
+0%,100%{
+transform:
+translateY(0)
+translateX(0);
+}
+
+50%{
+transform:
+translateY(40px)
+translateX(30px);
+}
+
+}
+
+@keyframes glowMove2{
+
+0%,100%{
+transform:
+translateY(0)
+translateX(0);
+}
+
+50%{
+transform:
+translateY(-40px)
+translateX(-30px);
+}
+
+}
 
 /* ===== SCROLL BAR ===== */
 
@@ -151,15 +232,48 @@ nav{
 
     color:var(--text-soft);
 
-    padding:10px 16px;
+    padding:12px 18px;
 
-    border-radius:14px;
+    border-radius:16px;
 
     position:relative;
 
-    transition:0.3s;
+    overflow:hidden;
+
+    background:
+    rgba(255,255,255,.03);
+
+    border:
+    1px solid rgba(255,255,255,.05);
+
+    transition:.4s;
+}
+.nav-links a::after{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-100%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.18),
+transparent
+);
+
+transition:.6s;
 }
 
+.nav-links a:hover::after{
+left:100%;
+}
 .nav-links a::before{
     content:"✦";
 
@@ -177,19 +291,25 @@ nav{
     color:#a78bfa;
 }
 
-.nav-links a:hover::before{
-    transform:
-        translateY(-50%)
-        scale(1);
-}
-
 .nav-links a:hover{
     color:white;
 
-    background:
-        rgba(255,255,255,0.05);
+    transform:
+    translateY(-4px)
+    scale(1.05);
 
-    transform:translateY(-2px);
+    background:
+    linear-gradient(
+    135deg,
+    rgba(139,92,246,.25),
+    rgba(99,102,241,.20)
+    );
+
+    border:
+    1px solid rgba(139,92,246,.4);
+
+    box-shadow:
+    0 10px 25px rgba(99,102,241,.25);
 }
 
 .nav-toggle{
@@ -583,6 +703,8 @@ section{
 
 .portfolio-item{
     overflow:hidden;
+
+    border-radius:24px;
 }
 
 .portfolio-image{
@@ -767,6 +889,53 @@ float 10s infinite ease-in-out;
 
 z-index:-1;
 }
+    .hero::before{
+opacity:.9;
+}
+
+.hero::after{
+opacity:.9;
+}
+
+.hero{
+position:relative;
+}
+
+.hero span{
+position:absolute;
+
+width:6px;
+height:6px;
+
+background:white;
+
+border-radius:50%;
+
+animation:
+floatParticle 5s linear infinite;
+}
+
+@keyframes floatParticle{
+
+0%{
+transform:
+translateY(0);
+
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:
+translateY(-200px);
+
+opacity:0;
+}
+
+}
 
 /* ===== RESPONSIVE ===== */
 
@@ -862,6 +1031,10 @@ MUHAMAD HILAL MUBAROK
 <!-- HERO -->
 
 <section class="hero" id="home">
+<span style="left:20%;top:80%"></span>
+<span style="left:40%;top:90%"></span>
+<span style="left:60%;top:75%"></span>
+<span style="left:80%;top:85%"></span>
 
 <div class="hero-content">
 
@@ -1069,7 +1242,7 @@ Beberapa project terbaik yang pernah saya kerjakan
 
 <div class="portfolio-item reveal">
 
-<div class="portofolio-image">
+<div class="portfolio-image">
     <img src="https://i.ibb.co.com/DHKWfcZn/IMG-20251106-175806.jpg" alt="Sketsa Wajah">
 </div>
 
@@ -1090,7 +1263,7 @@ Karya sketsa realistis dengan detail tinggi
 
 <div class="portfolio-item reveal">
 
-<div class="portofolio-image">
+<div class="portfolio-image">
    <img src="https://i.ibb.co.com/t9V4ZBR/Screenshot-2025-11-19-19-43-49-963-com-arabyfree-zaaaaakh-edit.jpg" alt="Kaligrafi"> 
 </div>
 
