@@ -600,8 +600,23 @@ section{
 /* ===== SKILL CARD ===== */
 
 .skill-card{
-    padding:30px;
-    animation:skillFloat 4s ease-in-out infinite;
+
+padding:30px;
+
+position:relative;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+145deg,
+rgba(30,41,59,.8),
+rgba(15,23,42,.9)
+);
+
+animation:
+skillFloat 4s ease-in-out infinite;
+
 }
 
 .skill-card:nth-child(2){
@@ -614,6 +629,98 @@ section{
 
 .skill-card:nth-child(4){
     animation-delay:1.5s;
+}
+    .skill-bar{
+
+width:100%;
+
+height:10px;
+
+background:
+rgba(255,255,255,.06);
+
+border-radius:20px;
+
+margin-top:18px;
+
+overflow:hidden;
+
+}
+    .skill-card::before{
+
+content:"";
+
+position:absolute;
+
+width:120px;
+height:120px;
+
+background:
+rgba(139,92,246,.15);
+
+filter:blur(50px);
+
+top:-40px;
+right:-30px;
+
+transition:.5s;
+
+}
+
+.skill-card:hover::before{
+
+transform:
+scale(1.5);
+
+}
+
+.skill-fill{
+
+height:100%;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+90deg,
+var(--primary),
+var(--secondary)
+);
+
+position:relative;
+
+animation:
+fillAnim 2s ease;
+
+}
+
+.skill-fill::after{
+
+content:"";
+
+position:absolute;
+
+right:0;
+top:-3px;
+
+width:16px;
+height:16px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+0 0 20px white;
+
+}
+
+@keyframes fillAnim{
+
+from{
+width:0;
+}
+
 }
 
 .skill-icon{
@@ -1154,7 +1261,17 @@ Beberapa kemampuan utama yang saya kuasai
     <img src="https://i.ibb.co.com/4RfYs1yJ/IMG-20260517-WA0001.jpg" alt="Seketsa Wajah">
 </div>
 
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
 <h3>Sketsa Wajah</h3>
+
+<span>95%</span>
+
+</div>
 
 <p>
 Membuat sketsa wajah detail dan realistis
@@ -1172,10 +1289,20 @@ Membuat sketsa wajah detail dan realistis
     <img src="https://i.ibb.co.com/MD4Cqt1v/IMG-20260517-WA0003.jpg" alt="Figma Design">
 </div>
 
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
 <h3>Figma Design</h3>
 
+<span>90%</span>
+
+</div>
+
 <p>
-UI/UX modern dan prototyping profesional
+UI/UX Moderen dan Prototyping prefesional
 </p>
 
 <div class="skill-bar">
@@ -1190,7 +1317,17 @@ UI/UX modern dan prototyping profesional
     <img src="https://i.ibb.co.com/qFNQsQhN/IMG-20260517-WA0002.jpg" alt="Corel Draw">
 </div>
 
-<h3>Corel Draw</h3>
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
+<h3>Corell Drawing</h3>
+
+<span>88%</span>
+
+</div>
 
 <p>
 Ilustrasi vector dan desain branding
@@ -1208,7 +1345,17 @@ Ilustrasi vector dan desain branding
     <img src="https://i.ibb.co.com/hxggqMqv/WA-1778994786330.jpg" alt="Mural">
 </div>
 
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+">
+
 <h3>Mural</h3>
+
+<span>93%</span>
+
+</div>
 
 <p>
 Konsep mural artistik modern dan kreatif
