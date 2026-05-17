@@ -472,45 +472,86 @@ section{
 
 .skill-card{
     padding:30px;
+    animation:skillFloat 4s ease-in-out infinite;
+}
+
+.skill-card:nth-child(2){
+    animation-delay:0.5s;
+}
+
+.skill-card:nth-child(3){
+    animation-delay:1s;
+}
+
+.skill-card:nth-child(4){
+    animation-delay:1.5s;
 }
 
 .skill-icon{
-    font-size:3rem;
+    width:100%;
+    height:180px;
+
+    overflow:hidden;
+
+    border-radius:18px;
 
     margin-bottom:20px;
 }
 
-.skill-card h3{
-    margin-bottom:10px;
+.skill-icon img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:.4s;
 }
 
-.skill-card p{
-    color:var(--text-soft);
-
-    margin-bottom:25px;
+.skill-card:hover .skill-icon img{
+    transform:scale(1.08);
 }
 
-.skill-bar{
-    height:8px;
+/* ===== PORTFOLIO ===== */
 
-    border-radius:20px;
+.portfolio-item{
+    overflow:hidden;
+}
+
+.portfolio-image{
+    height:240px;
 
     overflow:hidden;
 
-    background:
-        rgba(255,255,255,0.08);
+    border-radius:20px 20px 0 0;
 }
 
-.skill-fill{
+.portfolio-image img{
+    width:100%;
     height:100%;
 
-    background:linear-gradient(
-        90deg,
-        var(--primary),
-        var(--secondary)
-    );
+    object-fit:cover;
 
-    border-radius:20px;
+    transition:.5s;
+}
+
+.portfolio-item:hover .portfolio-image img{
+    transform:scale(1.08);
+}
+
+/* ===== ANIMASI SKILL ===== */
+
+@keyframes skillFloat{
+
+0%,100%{
+    transform:translateY(0);
+}
+
+50%{
+    transform:translateY(-12px);
+}
+
 }
 
 /* ===== PORTFOLIO ===== */
@@ -982,7 +1023,7 @@ Beberapa project terbaik yang pernah saya kerjakan
 
 <div class="portfolio-item reveal">
 
-<div class="portfolio-image">
+<div class="portofolio-image">
     <img src="https://i.ibb.co.com/DHKWfcZn/IMG-20251106-175806.jpg" alt="Sketsa Wajah">
 </div>
 
